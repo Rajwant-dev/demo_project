@@ -1,0 +1,40 @@
+import 'package:flutter/material.dart';
+import 'package:demo_project/screens/main_book_section.dart';
+import 'package:demo_project/screens/single_book_category.dart';
+
+class BookDrawer extends StatelessWidget {
+  const BookDrawer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        children: [
+          const DrawerHeader(
+            decoration: BoxDecoration(color: Colors.blue),
+            child: Text('Book Explorer',
+                style: TextStyle(color: Colors.white, fontSize: 24)),
+          ),
+          ListTile(
+            title: const Text('Book Categories List'),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (_) => StaticBookListScreen()),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('Popular Books'),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (_) => PopularBooksListScreen()),
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
