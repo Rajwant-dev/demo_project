@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:demo_project/screens/main_book_section.dart';
+import 'package:demo_project/screens/static_books_categories.dart';
 import 'package:demo_project/screens/popular_books.dart';
 
 class BookDrawer extends StatelessWidget {
@@ -20,7 +20,7 @@ class BookDrawer extends StatelessWidget {
             onTap: () {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (_) => StaticBookListScreen()),
+                MaterialPageRoute(builder: (_) => StaticBooksCategories()),
               );
             },
           ),

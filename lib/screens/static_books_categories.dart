@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/navigation_drawer.dart';
 
-class StaticBookListScreen extends StatelessWidget {
+class StaticBooksCategories extends StatelessWidget {
   final List<Map<String, String>> category = [
     {'title': 'Technology', 'image': 'assets/images/technology.png'},
     {'title': 'Science', 'image': 'assets/images/science.png'},
@@ -9,7 +9,7 @@ class StaticBookListScreen extends StatelessWidget {
     {'title': 'Psychology', 'image': 'assets/images/psychology.png'},
   ];
 
-  StaticBookListScreen({super.key});
+  StaticBooksCategories({super.key});
 
   @override
   Widget build(BuildContext context) {

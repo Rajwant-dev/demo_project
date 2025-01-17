@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:demo_project/screens/main_book_section.dart';
+import 'package:demo_project/screens/static_books_categories.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     Timer(Duration(seconds: 4), () {
       Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => StaticBookListScreen()));
+          MaterialPageRoute(builder: (context) => StaticBooksCategories()));
     });
   }
 
