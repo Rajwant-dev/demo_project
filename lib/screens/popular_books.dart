@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/navigation_drawer.dart';
 import '../services/book_category_api.dart';
+import '../models/book.dart';
 
 class PopularBooksListScreen extends StatefulWidget {
   @override
@@ -8,7 +9,7 @@ class PopularBooksListScreen extends StatefulWidget {
 }
 
 class _PopularBooksListScreenState extends State<PopularBooksListScreen> {
-  late List<Map<String, Object>> jsonList;
+  late List<Book> books;
   bool isLoading = true;
 
   @override
@@ -21,7 +22,7 @@ class _PopularBooksListScreenState extends State<PopularBooksListScreen> {
     try {
       var data = await BookApi.fetchBooks();
       setState(() {
-        jsonList = data;
+        books = data;
         isLoading = false;
       });
     } catch (e) {
@@ -40,27 +41,21 @@ class _PopularBooksListScreenState extends State<PopularBooksListScreen> {
       body: isLoading
           ? Center(child: CircularProgressIndicator())
           : ListView.builder(
-              itemCount: jsonList.length,
+              itemCount: books.length,
               itemBuilder: (BuildContext context, int index) {
-                final thumbnail =
-                    jsonList[index]['cover_image'] as String? ?? '';
-                final title =
-                    jsonList[index]['title'] as String? ?? 'Unknown Title';
-                final subtitle = jsonList[index]['description'] as String? ??
-                    'No Description';
-
+                final book = books[index];
                 return Card(
                   child: ListTile(
                     leading: ClipRRect(
                         borderRadius: BorderRadius.circular(80),
                         child: Image.network(
-                          thumbnail,
+                          book.coverImage,
                           fit: BoxFit.fill,
                           width: 50,
                           height: 50,
                         )),
-                    title: Text(title),
-                    subtitle: Text(subtitle),
+                    title: Text(book.title),
+                    subtitle: Text(book.description),
                   ),
                 );
               }),
